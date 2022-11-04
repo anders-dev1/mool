@@ -1,0 +1,44 @@
+parameters:
+  - name: infrastructure_name
+    type: string
+
+steps:
+- task: TerraformTaskV3@3
+  displayName: 'init terraform'
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/mool/devops/terraform'
+    commandOptions: '-var-file=subscriptions.tfvars -reconfigure'
+    backendServiceArm: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    backendAzureRmResourceGroupName: 'general-directory-resources'
+    backendAzureRmStorageAccountName: 'tfstates130465'
+    backendAzureRmContainerName: 'states'
+    backendAzureRmKey: '${{parameters.infrastructure_name}}/terraform.tfstate'
+
+- task: TerraformTaskV3@3
+  displayName: 'apply terraform'
+  inputs:
+    provider: 'azurerm'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/mool/devops/terraform'
+    commandOptions: '-auto-approve -var-file=subscriptions.tfvars -var "infrastructure_name=${{parameters.infrastructure_name}}"'
+    environmentServiceNameAzureRM: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+
+- task: TerraformTaskV3@3
+  displayName: 'save output of terraform'
+  name: 'terraform_output_${{parameters.infrastructure_name}}'
+  inputs:
+    provider: 'azurerm'
+    command: 'output'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/mool/devops/terraform'
+    outputTo: file
+    outputFormat: json
+    fileName: 'terraform-values.json'
+    environmentServiceNameAzureRM: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+
+- task: oneLuckiDevJson2Variable@1
+  displayName: 'import terraform output into pipeline'
+  inputs:
+    jsonFile: '$(terraform_output_${{parameters.infrastructure_name}}.jsonOutputVariablesPath)'
+    shouldPrefixVariables: false

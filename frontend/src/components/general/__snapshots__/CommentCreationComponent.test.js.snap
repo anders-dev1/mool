@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<form
+  action="#"
+  onReset={[Function]}
+  onSubmit={[Function]}
+>
+  <div
+    className="flex items-start"
+  >
+    <img
+      className="sc-gsnTZi ikquYD"
+      src="http://placekitten.com/256/256"
+    />
+    <div
+      className="flex-auto ml1"
+    >
+      <div
+        className="sc-dkzDqf kQYKHC"
+      >
+        <textarea
+          data-testid="commentCreationTextArea"
+          name="comment"
+          onBlur={[Function]}
+          onChange={[Function]}
+          placeholder="Write your input here..."
+          value=""
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="flex justify-end mt1"
+  >
+    <button
+      className="sc-gKXOVf ea-dSCL"
+      data-testid="commentCreationPostBtn"
+      type="submit"
+    >
+      <div
+        className="sc-iBkjds dfLXjt"
+        data-testid="childcontainer"
+      >
+        Post
+      </div>
+      <div
+        className="sc-ftvSup jRdbpG"
+        data-testid="spinner"
+      >
+        <div
+          className="sc-hKMtZM yROcv lds-ring"
+          size="1.5"
+        >
+          <div
+            className="sc-eCYdqJ hoxuOs"
+            size="1.5"
+          />
+          <div
+            className="sc-eCYdqJ hoxuOs"
+            size="1.5"
+          />
+          <div
+            className="sc-eCYdqJ hoxuOs"
+            size="1.5"
+          />
+          <div
+            className="sc-eCYdqJ hoxuOs"
+            size="1.5"
+          />
+        </div>
+      </div>
+    </button>
+  </div>
+</form>
+`;

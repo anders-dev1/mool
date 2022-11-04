@@ -1,0 +1,48 @@
+$sm: 414px;
+
+body {
+  margin: 0;
+}
+
+* {
+  font-family: Acumin Pro, Arial, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size-adjust: 1;
+  font-size: 18px;
+  margin: 0;
+}
+
+.sm {
+  font-size: 14px;
+}
+
+.sub {
+  font-size: 16px;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.sm-hide {
+  display: none;
+  @media (min-width: $sm + 0.2px) {
+    display: block;
+  }
+}
+
+.sm-only {
+  display: none;
+  @media (max-width: $sm) {
+    display: block;
+  }
+}
+
+.fill {
+  width: 100%;
+}

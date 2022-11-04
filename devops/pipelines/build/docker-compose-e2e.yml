@@ -1,0 +1,44 @@
+version: '3.7'
+services:
+  
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    logging:
+      driver: none
+    ports:
+      - "27018:27017"
+
+  api:
+    image: ${REGISTRY}/moolbackend:${TAG}
+    environment:
+      Environment__Url: localhost:5001
+      JWT__Secret: df042c98-01aa-4159-b2e1-b05f4de52747
+      MongoDB__StandardConnectionString: mongodb://root:example@mongo:27017/
+      MongoDB__DatabaseName: Mool
+    depends_on:
+      - mongo
+    ports:
+      - "5001:80"
+
+  frontend:
+    image: ${REGISTRY}/moolfrontend:${TAG}
+    ports:
+      - "3000:80"
+    environment:
+      - proxy_pass=http://api:80
+
+  dataseeder:
+    image: ${REGISTRY}/mooldataseeder:${TAG}
+    environment:
+      MongoDB__StandardConnectionString: mongodb://root:example@mongo:27017/
+      MongoDB__DatabaseName: Mool
+      Logging__LogLevel__Default: Debug
+      Logging__LogLevel__Microsoft.AspNetCore: Debug
+    depends_on:
+      - mongo
+    ports:
+      - "7273:80"

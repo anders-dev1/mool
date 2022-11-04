@@ -1,0 +1,19 @@
+# Composes the services needed for backend development.
+version: '3.7'
+services:
+    mongo:
+        image: mongo
+        restart: always
+        environment:
+          MONGO_INITDB_ROOT_USERNAME: root
+          MONGO_INITDB_ROOT_PASSWORD: example
+        ports:
+          - "27018:27017"
+    
+    frontend:
+      image: moolfrontend
+      # We need to change the network mode to host if we want the nginx proxy in the frontend image to be able to 
+      # hit the backend running from an IDE or via dotnet run.
+      network_mode: host
+      environment:
+        - proxy_pass=https://localhost:5001

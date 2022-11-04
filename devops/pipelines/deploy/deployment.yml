@@ -1,0 +1,52 @@
+parameters:
+  - name: ci_infrastructure_name
+    type: string
+  - name: infrastructure_name
+    type: string
+  - name: build_number
+    type: string
+
+steps:
+- task: AzureCLI@2
+  displayName: 'import backend image into ACR'
+  inputs:
+    azureSubscription: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: >-
+      az acr import 
+      --name ${{parameters.infrastructure_name}} 
+      --source ${{parameters.ci_infrastructure_name}}.azurecr.io/moolbackend:${{parameters.build_number}} 
+      --image moolbackend:${{parameters.build_number}} 
+      -t moolbackend:latest 
+      --force
+
+- task: AzureWebAppContainer@1
+  displayName: 'deploy backend container to app service'
+  inputs:
+    azureSubscription: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    appName: '${{parameters.infrastructure_name}}-backend'
+    resourceGroupName: '${{parameters.infrastructure_name}}'
+    containers: '${{parameters.infrastructure_name}}.azurecr.io/moolbackend:${{parameters.build_number}}'
+
+- task: AzureCLI@2
+  displayName: 'import frontend image into ACR'
+  inputs:
+    azureSubscription: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    scriptType: 'pscore'
+    scriptLocation: 'inlineScript'
+    inlineScript: >- 
+      az acr import
+      --name ${{parameters.infrastructure_name}} 
+      --source ${{parameters.ci_infrastructure_name}}.azurecr.io/moolfrontend:${{parameters.build_number}} 
+      --image moolfrontend:${{parameters.build_number}} 
+      -t moolfrontend:latest 
+      --force
+
+- task: AzureWebAppContainer@1
+  displayName: 'deploy frontend container to app service'
+  inputs:
+    azureSubscription: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    appName: '${{parameters.infrastructure_name}}-frontend'
+    resourceGroupName: '${{parameters.infrastructure_name}}'
+    containers: '${{parameters.infrastructure_name}}.azurecr.io/moolfrontend:${{parameters.build_number}}'

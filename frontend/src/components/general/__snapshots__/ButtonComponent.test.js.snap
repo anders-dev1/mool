@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<button
+  className="sc-hKMtZM ivzQBy"
+>
+  <div
+    className="sc-eCYdqJ cWdtZE"
+    data-testid="childcontainer"
+  />
+  <div
+    className="sc-jSMfEi cfugSa"
+    data-testid="spinner"
+  >
+    <div
+      className="sc-bczRLJ jdNppJ lds-ring"
+      size="1.6"
+    >
+      <div
+        className="sc-gsnTZi BOYSF"
+        size="1.6"
+      />
+      <div
+        className="sc-gsnTZi BOYSF"
+        size="1.6"
+      />
+      <div
+        className="sc-gsnTZi BOYSF"
+        size="1.6"
+      />
+      <div
+        className="sc-gsnTZi BOYSF"
+        size="1.6"
+      />
+    </div>
+  </div>
+</button>
+`;

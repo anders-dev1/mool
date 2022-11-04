@@ -1,0 +1,60 @@
+# CI/build pipeline for the project.
+# Requirements for running:
+# 1. CI IaC must be set up with the infrastructureName first.
+# 2. Remember to also update the service connection to the ACR.
+
+trigger:
+  branches:
+    include:
+    - master
+  paths:
+    exclude:
+    - devops
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+variables:
+  infrastructureName: 'INSERT CI INFRASTRUCTURE NAME HERE'
+
+steps:
+- checkout: self
+  persistCredentials: true
+
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'echo ''${{variables.infrastructureName}}'''
+
+- template: backend.yml
+
+- template: frontend.yml
+
+- template: dataseeder.yml
+
+- template: e2e.yml
+  parameters:
+    infrastructureName: ${{variables.infrastructureName}}
+
+- script: |
+    git config --global user.email pipeline & git config --global user.name "Pipeline"
+  displayName: "set up git creds"
+
+- script: |
+    git checkout -b master
+    git tag -a $(build.buildNumber) $(build.sourceVersion) -m "Build"
+    git push origin $(build.buildNumber)
+  displayName: "push tag of build to built commit"
+
+- task: CopyFiles@2
+  displayName: move Terraform script to artifact folder
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)/devops/iac/environment'
+    Contents: '**'
+    TargetFolder: '$(System.DefaultWorkingDirectory)/artifact/devops/terraform'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/artifact'
+    ArtifactName: 'mool'
+    publishLocation: 'Container'

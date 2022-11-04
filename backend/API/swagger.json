@@ -1,0 +1,761 @@
+{
+  "x-generator": "NSwag v13.15.5.0 (NJsonSchema v10.6.6.0 (Newtonsoft.Json v12.0.0.0))",
+  "swagger": "2.0",
+  "info": {
+    "title": "My Title",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/accesstoken/authenticate": {
+      "post": {
+        "tags": [
+          "AccessToken"
+        ],
+        "operationId": "AccessToken_Authenticate",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/AuthenticationQuery"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/AuthenticationResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/accesstoken/renew": {
+      "post": {
+        "tags": [
+          "AccessToken"
+        ],
+        "operationId": "AccessToken_Renew",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RenewAccessTokenCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/RenewAccessTokenResult"
+            }
+          }
+        }
+      }
+    },
+    "/api/thread/{threadId}/comments": {
+      "get": {
+        "tags": [
+          "Comments"
+        ],
+        "operationId": "Comments_Comments",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "type": "integer",
+            "name": "order",
+            "in": "query",
+            "x-schema": {
+              "$ref": "#/definitions/CommentOrder"
+            },
+            "x-nullable": true,
+            "enum": [
+              0,
+              1
+            ]
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/CommentList"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Comments"
+        ],
+        "operationId": "Comments_Create",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "type": "string",
+            "name": "threadId",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          },
+          {
+            "name": "content",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/exceptionfiltertest/badrequest": {
+      "post": {
+        "tags": [
+          "ExceptionFilterTest"
+        ],
+        "operationId": "ExceptionFilterTest_BadRequest",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExceptionTestRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/exceptionfiltertest/conflict": {
+      "post": {
+        "tags": [
+          "ExceptionFilterTest"
+        ],
+        "operationId": "ExceptionFilterTest_Conflict",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExceptionTestRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/exceptionfiltertest/notfound": {
+      "post": {
+        "tags": [
+          "ExceptionFilterTest"
+        ],
+        "operationId": "ExceptionFilterTest_NotFound",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExceptionTestRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/exceptionfiltertest/unauthorized": {
+      "post": {
+        "tags": [
+          "ExceptionFilterTest"
+        ],
+        "operationId": "ExceptionFilterTest_Unauthorized",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ExceptionTestRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/exceptionfiltertest/validation": {
+      "post": {
+        "tags": [
+          "ExceptionFilterTest"
+        ],
+        "operationId": "ExceptionFilterTest_Validation",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ValidationTestRequest"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": true,
+            "description": "",
+            "schema": {
+              "type": "file"
+            }
+          }
+        }
+      }
+    },
+    "/api/comment/{Id}/like": {
+      "post": {
+        "tags": [
+          "LikeComment"
+        ],
+        "operationId": "LikeComment_Like",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/comment/{Id}/unlike": {
+      "post": {
+        "tags": [
+          "LikeComment"
+        ],
+        "operationId": "LikeComment_Unlike",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/thread/{Id}/like": {
+      "post": {
+        "tags": [
+          "LikeThread"
+        ],
+        "operationId": "LikeThread_Like",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/thread/{Id}/unlike": {
+      "post": {
+        "tags": [
+          "LikeThread"
+        ],
+        "operationId": "LikeThread_Unlike",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "x-nullable": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/api/thread": {
+      "post": {
+        "tags": [
+          "Thread"
+        ],
+        "operationId": "Thread_Create",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "threadCreationCommand",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ThreadCreationCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Thread"
+        ],
+        "operationId": "Thread_List",
+        "produces": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "responses": {
+          "200": {
+            "x-nullable": false,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ThreadList"
+            }
+          }
+        }
+      }
+    },
+    "/api/user": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "operationId": "User_Create",
+        "consumes": [
+          "application/json-patch+json",
+          "application/json",
+          "text/json",
+          "application/*+json"
+        ],
+        "parameters": [
+          {
+            "name": "userCreationCommand",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UserCreationCommand"
+            },
+            "x-nullable": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "AuthenticationResult": {
+      "type": "object",
+      "required": [
+        "tokens"
+      ],
+      "properties": {
+        "tokens": {
+          "$ref": "#/definitions/AuthenticatedTokens"
+        }
+      }
+    },
+    "AuthenticatedTokens": {
+      "type": "object",
+      "required": [
+        "accessToken",
+        "refreshToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        },
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "AuthenticationQuery": {
+      "type": "object",
+      "required": [
+        "email",
+        "password"
+      ],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "RenewAccessTokenResult": {
+      "type": "object",
+      "required": [
+        "accessToken"
+      ],
+      "properties": {
+        "accessToken": {
+          "type": "string"
+        }
+      }
+    },
+    "RenewAccessTokenCommand": {
+      "type": "object",
+      "required": [
+        "refreshToken"
+      ],
+      "properties": {
+        "refreshToken": {
+          "type": "string"
+        }
+      }
+    },
+    "CommentList": {
+      "type": "object",
+      "required": [
+        "comments"
+      ],
+      "properties": {
+        "comments": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CommentViewModel"
+          }
+        }
+      }
+    },
+    "CommentViewModel": {
+      "type": "object",
+      "required": [
+        "id",
+        "authorName",
+        "content",
+        "likes",
+        "likedByCurrentUser"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "authorName": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "likes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "likedByCurrentUser": {
+          "type": "boolean"
+        }
+      }
+    },
+    "CommentOrder": {
+      "type": "integer",
+      "description": "",
+      "x-enumNames": [
+        "OldestFirst",
+        "NewestFirst"
+      ],
+      "enum": [
+        0,
+        1
+      ]
+    },
+    "ExceptionTestRequest": {
+      "type": "object",
+      "required": [
+        "error",
+        "key"
+      ],
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "ValidationTestRequest": {
+      "type": "object",
+      "required": [
+        "validationErrors",
+        "message",
+        "key"
+      ],
+      "properties": {
+        "validationErrors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ValidationError"
+          }
+        },
+        "message": {
+          "type": "string"
+        },
+        "key": {
+          "type": "string"
+        }
+      }
+    },
+    "ValidationError": {
+      "type": "object",
+      "required": [
+        "propertyName",
+        "error"
+      ],
+      "properties": {
+        "propertyName": {
+          "type": "string"
+        },
+        "error": {
+          "type": "string"
+        }
+      }
+    },
+    "ThreadCreationCommand": {
+      "type": "object",
+      "required": [
+        "content"
+      ],
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "ThreadList": {
+      "type": "object",
+      "required": [
+        "threads"
+      ],
+      "properties": {
+        "threads": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MoolThreadViewModel"
+          }
+        }
+      }
+    },
+    "MoolThreadViewModel": {
+      "type": "object",
+      "required": [
+        "id",
+        "created",
+        "content",
+        "likes",
+        "likedByCurrentUser",
+        "comments"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "author": {
+          "type": "string"
+        },
+        "content": {
+          "type": "string"
+        },
+        "likes": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "likedByCurrentUser": {
+          "type": "boolean"
+        },
+        "comments": {
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "UserCreationCommand": {
+      "type": "object",
+      "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "password"
+      ],
+      "properties": {
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

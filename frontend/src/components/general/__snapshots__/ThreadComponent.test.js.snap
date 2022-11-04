@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="sc-bczRLJ gvFepU"
+>
+  <div
+    className="flex justify-start"
+  >
+    <img
+      className="sc-gsnTZi eumTWv mr1 mb2"
+      src="http://placekitten.com/256/256"
+    />
+    <div
+      className="flex-column pt1"
+    >
+      <p>
+        Thread Threadson
+      </p>
+    </div>
+  </div>
+  <p
+    className="mb1"
+    data-testid="threadContent"
+  >
+    The thread
+  </p>
+  <div
+    className="flex justify-end"
+  >
+    <div
+      className="sc-eCYdqJ grpftZ mr1"
+      color="#007BFF"
+      data-testid="threadLikeBtn"
+      href="#"
+      onClick={[Function]}
+    >
+      <p
+        className="sc-jSMfEi gBFlZU"
+      >
+        👍
+      </p>
+      <div
+        className="sc-gKXOVf hWrAIB"
+      >
+        <p
+          className="sc-iBkjds cpkijM"
+          data-testid="number"
+        >
+          0
+        </p>
+      </div>
+    </div>
+    <div
+      className="sc-eCYdqJ grpftZ"
+      data-testid="threadCommentBtn"
+      href="#"
+      onClick={[Function]}
+    >
+      <p
+        className="sc-jSMfEi gBFlZU"
+      >
+        💬
+      </p>
+      <div
+        className="sc-gKXOVf hWrAIB"
+      >
+        <p
+          className="sc-iBkjds cpkijM"
+          data-testid="number"
+        >
+          1
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

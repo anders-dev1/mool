@@ -1,0 +1,8 @@
+azurerm_subscription_id=""
+azurerm_subscription_tenant_id=""
+azurerm_mongo_key_vault_name=""
+azurerm_mongo_key_vault_resource_group_name=""
+azurerm_mongo_private_key_secret_name=""
+mongodbatlas_public_key=""
+mongodbatlas_org_id=""
+mongodbatlas_api_key_id=""

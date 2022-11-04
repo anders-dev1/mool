@@ -1,0 +1,52 @@
+ # Triggers when build is done in the build pipeline.
+
+trigger:
+  branches:
+    exclude:
+      - master
+
+resources:
+  pipelines:
+    - pipeline: Build
+      source: Build
+      trigger: true
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+variables:
+- name: ciInfrastructureName
+  value: "INSERT CI INFRASTRUCTURE NAME HERE"
+
+stages:
+- stage: deploy_to_staging
+  jobs:
+  - deployment: 
+    environment: Staging
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: none
+          - template: deploy/pipeline.yml
+            parameters:
+              infrastructure_name: "INSERT INFRASTRUCTURE NAME HERE"
+              ci_infrastructure_name: ${{variables.ciInfrastructureName}}
+              build_id: $(resources.pipeline.Build.runId)
+              build_number: $(resources.pipeline.Build.runName)
+
+- stage: deploy_to_production
+  jobs:
+  - deployment: 
+    environment: Production
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: none
+          - template: deploy/pipeline.yml
+            parameters:
+              infrastructure_name: "INSERT INFRASTRUCTURE NAME HERE"
+              ci_infrastructure_name: ${{variables.ciInfrastructureName}}
+              build_id: $(resources.pipeline.Build.runId)
+              build_number: $(resources.pipeline.Build.runName)

@@ -1,0 +1,31 @@
+parameters:
+- name: infrastructureName
+  type: string
+
+steps:
+- task: DockerCompose@0
+  displayName: compose E2E containers
+  inputs:
+    containerregistrytype: 'Azure Container Registry'
+    azureSubscription: 'subscription(16f65e89-aafb-48a6-a591-f4490bd87de3)'
+    azureContainerRegistry: '{"loginServer":"${{parameters.infrastructureName}}.azurecr.io", "id" : "/subscriptions/16f65e89-aafb-48a6-a591-f4490bd87de3/resourceGroups/moolci2837/providers/Microsoft.ContainerRegistry/registries/${{parameters.infrastructureName}}"}'
+    dockerComposeFile: 'devops/pipelines/build/docker-compose-e2e.yml'
+    dockerComposeFileArgs: |
+      TAG=$(build.buildNumber)
+      REGISTRY=${{parameters.infrastructureName}}.azurecr.io
+    action: 'Run services'
+
+- task: Bash@3
+  displayName: run Cypress E2E tests
+  inputs:
+    targetType: 'inline'
+    script: 'npx cypress run'
+    workingDirectory: 'frontend/'
+
+- task: PublishBuildArtifacts@1
+  displayName: publish Cypress E2E video
+  condition: failed()
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/frontend/cypress/videos'
+    ArtifactName: 'e2efailure'
+    publishLocation: 'Container'

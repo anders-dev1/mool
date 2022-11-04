@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    className="flex justify-start"
+  >
+    <img
+      className="sc-bczRLJ ddxDEV mr1"
+      src="http://placekitten.com/256/256"
+    />
+    <div
+      className="flex-column pt1"
+    >
+      <p
+        className="sub"
+      >
+        This is the comment content.
+      </p>
+      <p
+        className="sub mt1"
+        data-testid="commentContent"
+      >
+        Lorem ipsum
+      </p>
+    </div>
+  </div>
+  <div
+    className="flex justify-end"
+  >
+    <div
+      className="sc-hKMtZM gBUhPo mr1"
+      color="#007BFF"
+      data-testid="commentLikeBtn"
+      href="#"
+      onClick={[Function]}
+    >
+      <p
+        className="sc-eCYdqJ grMfHa"
+      >
+        👍
+      </p>
+      <div
+        className="sc-jSMfEi fhnsns"
+      >
+        <p
+          className="sc-gKXOVf knNWEu"
+          data-testid="number"
+        >
+          42
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;

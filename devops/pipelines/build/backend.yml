@@ -1,0 +1,24 @@
+steps:
+- task: DockerCompose@0
+  displayName: start backend services for testing
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: 'docker-compose-backend-services-only.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'up'
+    arguments: '-d'
+
+- task: DotNetCoreCLI@2
+  displayName: test backend
+  inputs:
+    command: 'test'
+    workingDirectory: 'backend'
+
+- task: Docker@2
+  displayName: build and publish backend image to CI ACR registry
+  inputs:
+    command: buildAndPush
+    dockerfile: '$(Build.SourcesDirectory)/backend/api.dockerfile'
+    containerRegistry: moolci2837-acr-sc
+    repository: 'moolbackend'
+    tags: $(build.buildNumber)

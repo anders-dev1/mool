@@ -1,0 +1,9 @@
+steps:
+- task: Docker@2
+  displayName: build and publish dataseeder image to CI ACR registry
+  inputs:
+    command: buildAndPush
+    dockerfile: '$(Build.SourcesDirectory)/backend/dataseeder.dockerfile'
+    containerRegistry: moolci2837-acr-sc
+    repository: 'mooldataseeder'
+    tags: $(build.buildNumber)

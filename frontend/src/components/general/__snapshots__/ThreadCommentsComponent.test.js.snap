@@ -1,0 +1,285 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="ml1 mr1"
+>
+  <div
+    className="sc-bczRLJ csXGiU mt1 mb2"
+  />
+  <form
+    action="#"
+    onReset={[Function]}
+    onSubmit={[Function]}
+  >
+    <div
+      className="flex items-start"
+    >
+      <img
+        className="sc-gKXOVf igLdOd"
+        src="http://placekitten.com/256/256"
+      />
+      <div
+        className="flex-auto ml1"
+      >
+        <div
+          className="sc-evZas dXTKiT"
+        >
+          <textarea
+            data-testid="commentCreationTextArea"
+            name="comment"
+            onBlur={[Function]}
+            onChange={[Function]}
+            placeholder="Write your input here..."
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="flex justify-end mt1"
+    >
+      <button
+        className="sc-ksZaOG blzxvH"
+        data-testid="commentCreationPostBtn"
+        type="submit"
+      >
+        <div
+          className="sc-hAZoDl ciQoM"
+          data-testid="childcontainer"
+        >
+          Post
+        </div>
+        <div
+          className="sc-fnykZs gFyOxX"
+          data-testid="spinner"
+        >
+          <div
+            className="sc-iBkjds hEWUtX lds-ring"
+            size="1.5"
+          >
+            <div
+              className="sc-ftvSup kWpXHC"
+              size="1.5"
+            />
+            <div
+              className="sc-ftvSup kWpXHC"
+              size="1.5"
+            />
+            <div
+              className="sc-ftvSup kWpXHC"
+              size="1.5"
+            />
+            <div
+              className="sc-ftvSup kWpXHC"
+              size="1.5"
+            />
+          </div>
+        </div>
+      </button>
+    </div>
+  </form>
+  <div>
+    <div
+      className="sc-bczRLJ csXGiU mt1 mb2"
+    />
+    <div
+      className="flex justify-end"
+    >
+      <div
+        className="sc-gsnTZi jOVJit"
+      >
+        <div
+          className="sc-dkzDqf kNuMDP"
+          onClick={[Function]}
+        >
+          <div
+            className="sc-hKMtZM VPycp"
+          >
+            <p>
+              Oldest first
+            </p>
+            <img
+              alt="expand comments"
+              src="expand.svg"
+              style={
+                Object {
+                  "transform": "translateY(-2px)",
+                }
+              }
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div>
+      <div
+        className="flex justify-start"
+      >
+        <img
+          className="sc-gKXOVf igLdOd mr1"
+          src="http://placekitten.com/256/256"
+        />
+        <div
+          className="flex-column pt1"
+        >
+          <p
+            className="sub"
+          >
+            Test Testerson
+          </p>
+          <p
+            className="sub mt1"
+            data-testid="commentContent"
+          >
+            This is for testing1
+          </p>
+        </div>
+      </div>
+      <div
+        className="flex justify-end"
+      >
+        <div
+          className="sc-papXJ iKXivi mr1"
+          color="#007BFF"
+          data-testid="commentLikeBtn"
+          href="#"
+          onClick={[Function]}
+        >
+          <p
+            className="sc-jqUVSM gGcuMk"
+          >
+            👍
+          </p>
+          <div
+            className="sc-kDDrLX fDntCf"
+          >
+            <p
+              className="sc-iqcoie dpfJlZ"
+              data-testid="number"
+            >
+              0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-bczRLJ csXGiU mt1 mb2"
+    />
+  </div>
+  <div>
+    <div>
+      <div
+        className="flex justify-start"
+      >
+        <img
+          className="sc-gKXOVf igLdOd mr1"
+          src="http://placekitten.com/256/256"
+        />
+        <div
+          className="flex-column pt1"
+        >
+          <p
+            className="sub"
+          >
+            Test Testerson
+          </p>
+          <p
+            className="sub mt1"
+            data-testid="commentContent"
+          >
+            This is for testing2
+          </p>
+        </div>
+      </div>
+      <div
+        className="flex justify-end"
+      >
+        <div
+          className="sc-papXJ iKXivi mr1"
+          color="#007BFF"
+          data-testid="commentLikeBtn"
+          href="#"
+          onClick={[Function]}
+        >
+          <p
+            className="sc-jqUVSM gGcuMk"
+          >
+            👍
+          </p>
+          <div
+            className="sc-kDDrLX fDntCf"
+          >
+            <p
+              className="sc-iqcoie dpfJlZ"
+              data-testid="number"
+            >
+              0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="sc-bczRLJ csXGiU mt1 mb2"
+    />
+  </div>
+  <div>
+    <div>
+      <div
+        className="flex justify-start"
+      >
+        <img
+          className="sc-gKXOVf igLdOd mr1"
+          src="http://placekitten.com/256/256"
+        />
+        <div
+          className="flex-column pt1"
+        >
+          <p
+            className="sub"
+          >
+            Test Testerson
+          </p>
+          <p
+            className="sub mt1"
+            data-testid="commentContent"
+          >
+            This is for testing3
+          </p>
+        </div>
+      </div>
+      <div
+        className="flex justify-end"
+      >
+        <div
+          className="sc-papXJ iKXivi mr1"
+          color="#007BFF"
+          data-testid="commentLikeBtn"
+          href="#"
+          onClick={[Function]}
+        >
+          <p
+            className="sc-jqUVSM gGcuMk"
+          >
+            👍
+          </p>
+          <div
+            className="sc-kDDrLX fDntCf"
+          >
+            <p
+              className="sc-iqcoie dpfJlZ"
+              data-testid="number"
+            >
+              0
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

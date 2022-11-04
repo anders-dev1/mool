@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <div
+    class="sc-bczRLJ fEUKnN"
+  >
+    <div
+      class="sc-gsnTZi bvivOo"
+    >
+      <p>
+        This content should be inside the area :)
+      </p>
+    </div>
+  </div>
+</div>
+`;

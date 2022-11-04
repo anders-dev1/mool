@@ -1,0 +1,36 @@
+parameters:
+  # name of the environment infrastructure. Example: solutionenvironmentnumber.
+  - name: infrastructure_name
+    type: string
+  # name of the CI infrastructure. Example: solutioncinumber.
+  - name: ci_infrastructure_name
+    type: string
+  # Id of the Azure DevOps build. Example: 874.
+  - name: build_id
+    type: string
+  # Build number assigned by Azure DevOps. Example: 2022.11.1.
+  - name: build_number
+    type: string
+
+steps:
+- task: DownloadBuildArtifacts@1
+  displayName: 'download build artifact'
+  inputs:
+    buildType: 'specific'
+    project: 'INSERT YOUR OWN PROJECT HERE'
+    pipeline: 'INSERT YOUR OWN PIPELINE ID HERE'
+    buildVersionToDownload: 'specific'
+    buildId: ${{parameters.build_id}}
+    downloadType: 'single'
+    artifactName: mool
+    downloadPath: '$(System.DefaultWorkingDirectory)'
+
+- template: terraform.yml
+  parameters:
+    infrastructure_name: ${{parameters.infrastructure_name}}
+
+- template: deployment.yml
+  parameters:
+    ci_infrastructure_name: ${{parameters.ci_infrastructure_name}}  
+    infrastructure_name: ${{parameters.infrastructure_name}}
+    build_number: ${{parameters.build_number}}

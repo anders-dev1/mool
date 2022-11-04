@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when in initial state, renders correctly: Default state 1`] = `
+<div>
+  <div
+    class="sc-bczRLJ cseizD"
+  >
+    <div
+      class="sc-gsnTZi tvYfs"
+    >
+      <div
+        class="sc-dkzDqf cSTGXO"
+      >
+        <p>
+          First
+        </p>
+        <img
+          alt="expand comments"
+          src="expand.svg"
+          style="transform: translateY(-2px);"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`when dropped down, renders correctly: Dropped down 1`] = `
+<div>
+  <div
+    class="sc-bczRLJ cseizD"
+  >
+    <div
+      class="sc-gsnTZi ionnPL"
+    >
+      <div
+        class="sc-dkzDqf cSTGXO"
+      >
+        <p>
+          First
+        </p>
+        <img
+          alt="expand comments"
+          src="expand.svg"
+          style="transform: translateY(-2px);"
+        />
+      </div>
+      <div
+        class="sc-hKMtZM eKGUlp"
+      >
+        <div
+          class="sc-eCYdqJ gfgMTH"
+        >
+          <p>
+            First
+          </p>
+        </div>
+        <div
+          class="sc-eCYdqJ cliWDj"
+        >
+          <p>
+            Second
+          </p>
+        </div>
+        <div
+          class="sc-eCYdqJ cliWDj"
+        >
+          <p>
+            Third
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

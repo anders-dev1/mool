@@ -1,0 +1,30 @@
+steps:
+- task: Bash@3
+  displayName: npm install for frontend
+  inputs:
+    targetType: 'inline'
+    script: 'npm install'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/frontend'
+
+- task: Bash@3
+  displayName: unit test frontend
+  inputs:
+    targetType: 'inline'
+    script: 'npm run test-ci'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/frontend'
+
+- task: Bash@3
+  displayName: build frontend for publishing
+  inputs:
+    targetType: 'inline'
+    script: 'npm run build'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/frontend'
+
+- task: Docker@2
+  displayName: build and publish frontend image to CI ACR registry
+  inputs:
+    command: buildAndPush
+    dockerfile: '$(Build.SourcesDirectory)/frontend/dockerfile'
+    containerRegistry: moolci2837-acr-sc
+    repository: 'moolfrontend'
+    tags: $(build.buildNumber)
